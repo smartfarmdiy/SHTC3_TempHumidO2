@@ -1,32 +1,28 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 #include "SHTC3.h"
-//#include "DHT.h"
+
 
 SHTC3 s(Wire);
-//#define DHTTYPE DHT22 
+ 
 
 // Change the credentials below, so your ESP8266 connects to your router
-const char* ssid  = "Greenhousefarm";
-const char* password = " kalasinfarm1234";
+const char* ssid  = "xxxxxxx";  //example: Greenhousefarm
+const char* password = " xxxxxxx"; //example: kalasinfarm1234
 
 // Change the variable to your Raspberry Pi IP address, so it connects to your MQTT broker
 const char* mqtt_server = "mqtt.eclipse.org";
 
-char auth[]="e9733f00-829a-11ea-a505-873d744be10f";
+char auth[]="xxxxxxxxxxx"; //example Token ID: e9733f00-829a-11ea-a505-873d744be10f or see in Application when you register 
 
 // Initializes the espClient. You should change the espClient name if you have multiple ESPs running in your home automation system
 WiFiClient espClient;
 PubSubClient client(espClient);
 
-// DHT Sensor - GPIO 5 = D1 on ESP-12E NodeMCU board
 
-//const int DHTPin = 0;
 
-// Lamp - LED - GPIO 4 = D2 on ESP-12E NodeMCU board
+const int lamp = 2; // LED on board
 
-const int lamp = 2;
-//DHT dht(DHTPin, DHTTYPE);
 
 
 
@@ -167,7 +163,6 @@ void loop() {
    payloaddd.toCharArray( attributesd, 100 );
    client.publish("kalasintuaa2/smartfarmy", attributes );
    client.publish("kalasintubb2/smartfarmy", attributesb );
-   //client.publish("outputayinocc/smartfarmy", attributesc );
    client.publish("kalasintucc2/smartfarmy", attributesd );
    //Serial.println( attributes );
     
@@ -177,10 +172,7 @@ void loop() {
     Serial.print(t);
     Serial.print(" *C ");
     Serial.print(oto);
-    Serial.print(" *g/l\t Heat index: ");
-    //Serial.print(hic);
-    //Serial.println(" *C ");
-    // Serial.print(hif);
-    // Serial.println(" *F");
+    Serial.print(" *g/l\t O2 value: ");
+   
   }
 } 
