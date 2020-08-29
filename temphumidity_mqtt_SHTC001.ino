@@ -7,8 +7,8 @@ SHTC3 s(Wire);
  
 
 // Change the credentials below, so your ESP8266 connects to your router
-const char* ssid  = "xxxxxxx";  //example: Greenhousefarm
-const char* password = " xxxxxxx"; //example: kalasinfarm1234
+const char* ssid  = "xxxxxxx";  //example: xxGreenhousefarm
+const char* password = " xxxxxxx"; //example: xxxxfarm1234
 
 // Change the variable to your Raspberry Pi IP address, so it connects to your MQTT broker
 const char* mqtt_server = "mqtt.eclipse.org";
